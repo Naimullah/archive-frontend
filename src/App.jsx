@@ -1,32 +1,28 @@
 // import { Route } from "lucide-react"
-import { BrowserRouter ,Route, Routes} from 'react-router-dom'
-import Dashboard from './pages/dashboard/Dashboard';
+// import { BrowserRouter ,Route, Routes} from 'react-router-dom'
 import {createContext,useEffect,useState} from 'react'
-import Sidebar from "./components/sidebar/Sidebar"
-import Header from './components/header/Header';
+// import { Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Users from "./pages/Users";
+// import Settings from "./pages/Settings";
+import Sidebar from "./components/sidebar/Sidebar";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+import AppRoutes from './routes/AppRoutes';
 const Mycontext=createContext();
 function App() {
 const values={}
   return (
-    <>
-    <BrowserRouter>
-    <Mycontext.Provider value={values}>
-    <section className="main flex">
-       <div className="sidebarWrapper w-[15%]">
-        <Sidebar />
-       </div>
-       <div className="content_Right w-[85%] px-3">
-        <Header />
-        <div className="space"></div>
-        <Routes>
-          <Route path="/" exact={true} element={<Dashboard />} />
-        </Routes>
-       </div>
-      </section>
-    </Mycontext.Provider>
-    </BrowserRouter>
-    
-    </>
+    <div className="flex h-screen overflow-hidden">
+    <Sidebar />
+    <div className="flex flex-col w-full">
+      <Header />
+      <main className="flex-1 p-6 bg-gray-100 dark:bg-gray-800">
+        <AppRoutes />
+      </main>
+      <Footer />
+    </div>
+  </div>
   )
 }
 
